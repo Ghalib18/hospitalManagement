@@ -1,5 +1,6 @@
 package com.ghalib.hospitalManagement.repo;
 
+import com.ghalib.hospitalManagement.dto.BloodGroupCountEntity;
 import com.ghalib.hospitalManagement.entity.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +16,6 @@ public interface PatientRepo extends JpaRepository<Patient,Long> {
 
      // if we want to write some complex query then , we can use @query
 
-     @Query("select p.bloodGroup, Count(p) from Patient p group by p.bloodGroup")
-     List<Object[]>countOfBloodGroup();
+     @Query("select new com.ghalib.hospitalManagement.dto.BloodGroupCountEntity(p.bloodGroup, Count(p)) from Patient p group by p.bloodGroup")
+     List<BloodGroupCountEntity>countOfBloodGroup();
 }

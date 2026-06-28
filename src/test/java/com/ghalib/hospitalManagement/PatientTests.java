@@ -1,5 +1,6 @@
 package com.ghalib.hospitalManagement;
 
+import com.ghalib.hospitalManagement.dto.BloodGroupCountEntity;
 import com.ghalib.hospitalManagement.entity.Patient;
 import com.ghalib.hospitalManagement.repo.PatientRepo;
 import org.junit.jupiter.api.Test;
@@ -23,10 +24,10 @@ public class PatientTests {
         List<Patient> patients=patientRepo.findByNameContainingOrderByIdDesc("Neha Gupta");
         System.out.println(patients);
 
-        List<Object[]> listOfBloodGroup=patientRepo.countOfBloodGroup();
+        List<BloodGroupCountEntity> listOfBloodGroup=patientRepo.countOfBloodGroup();
 
-        for(Object[] obj:listOfBloodGroup){
-            System.out.println(obj[0]+" "+obj[1]);
+        for(BloodGroupCountEntity x:listOfBloodGroup){
+            System.out.println(x);
         }
     }
 

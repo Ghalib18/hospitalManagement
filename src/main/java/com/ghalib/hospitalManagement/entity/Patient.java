@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @ToString
@@ -30,4 +32,14 @@ public class Patient {
 
     @Enumerated(EnumType.STRING)
     private BloodGroup bloodGroup;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @OneToOne
+    private Insurance insurance;   // owning side
+
+    @OneToMany(mappedBy ="patient" )
+    private Appointment appointment;
 }
