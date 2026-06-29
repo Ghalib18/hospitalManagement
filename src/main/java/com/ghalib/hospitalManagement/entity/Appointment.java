@@ -24,6 +24,10 @@ public class Appointment {
     @Column(length=500)
     private String reason;
 
-    @ManyToOne
+    @ManyToOne             // owning side....
     private Patient patient;
+
+    @OneToOne
+    @JoinColumn(nullable = false)  // owning side.....
+    private Doctor doctor;
 }
