@@ -39,10 +39,15 @@ public class Patient {
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+
+    // here we learn the concept of orphanRemoval which means that i we set remove child from paernt class then it will be also remove from the child class (using @transcation)
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
     private Insurance insurance;   // owning side
 
-    @OneToMany(mappedBy ="patient" )
+
+    // In this we resolve the issue of n+1 query problem
+
+    @OneToMany(mappedBy ="patient", cascade = {CascadeType.REMOVE},orphanRemoval = true,fetch = FetchType.EAGER)
     @ToString.Exclude
     private List<Appointment> appointment=new ArrayList<>();
 }

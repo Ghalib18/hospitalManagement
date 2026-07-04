@@ -18,4 +18,7 @@ public interface PatientRepo extends JpaRepository<Patient,Long> {
 
      @Query("select new com.ghalib.hospitalManagement.dto.BloodGroupCountEntity(p.bloodGroup, Count(p)) from Patient p group by p.bloodGroup")
      List<BloodGroupCountEntity>countOfBloodGroup();
+
+     @Query("select p from Patient p left join fetch p.appointment")
+     List<Patient> findALL();
 }

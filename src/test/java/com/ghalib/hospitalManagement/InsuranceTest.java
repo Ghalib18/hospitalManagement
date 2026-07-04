@@ -25,5 +25,9 @@ public class InsuranceTest {
 
         Patient patient=insuranceService.assignInsuranceToPatient(insurance,1L);
         System.out.println(patient);
+
+
+        Patient newPatient=insuranceService.disaccociateInsuranceFromPatient(1L);
+        System.out.println(newPatient);
     }
 }

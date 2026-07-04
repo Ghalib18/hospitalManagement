@@ -1,19 +1,22 @@
-INSERT INTO patient(name, birth_date, email, gender, blood_group)
+INSERT INTO patient (name, gender, birth_date, email, blood_group)
 VALUES
-    ('Rahul Sharma','1999-05-15','rahul@example.com','Male','A_POSITIVE'),
-    ('Priya Singh','2001-08-20','priya@example.com','Female','O_NEGATIVE'),
-    ('Aman Verma','1998-03-10','aman@example.com','Male','B_POSITIVE'),
-    ('Neha Gupta','2000-12-05','neha@example.com','Female','AB_POSITIVE');
+    ('Aarav Sharma', 'MALE', '1990-05-10', 'aarav.sharma@example.com', 'O_POSITIVE'),
+    ('Diya Patel', 'FEMALE', '1995-08-20', 'diya.patel@example.com', 'A_POSITIVE'),
+    ('Dishant Verma', 'MALE', '1988-03-15', 'dishant.verma@example.com', 'A_POSITIVE'),
+    ('Neha Iyer', 'FEMALE', '1992-12-01', 'neha.iyer@example.com', 'AB_POSITIVE'),
+    ('Kabir Singh', 'MALE', '1993-07-11', 'kabir.singh@example.com', 'O_POSITIVE');
 
 INSERT INTO doctor (name, specialization, email)
 VALUES
-    ('Dr. Rajesh Sharma', 'Cardiologist', 'rajesh.sharma@example.com'),
-    ('Dr. Priya Verma', 'Dermatologist', 'priya.verma@example.com'),
-    ('Dr. Amit Kumar', 'Orthopedic', 'amit.kumar@example.com'),
-    ('Dr. Neha Singh', 'Neurologist', 'neha.singh@example.com'),
-    ('Dr. Arjun Mehta', 'Pediatrician', 'arjun.mehta@example.com'),
-    ('Dr. Sneha Roy', 'Gynecologist', 'sneha.roy@example.com'),
-    ('Dr. Vikram Patel', 'ENT Specialist', 'vikram.patel@example.com'),
-    ('Dr. Kavita Joshi', 'Ophthalmologist', 'kavita.joshi@example.com'),
-    ('Dr. Rohit Gupta', 'Psychiatrist', 'rohit.gupta@example.com'),
-    ('Dr. Anjali Mishra', 'General Physician', 'anjali.mishra@example.com');
+    ('Dr. Rakesh Mehta', 'Cardiology', 'rakesh.mehta@example.com'),
+    ('Dr. Sneha Kapoor', 'Dermatology', 'sneha.kapoor@example.com'),
+    ('Dr. Arjun Nair', 'Orthopedics', 'arjun.nair@example.com');
+
+INSERT INTO appointment (appointment_time, reason, doctor_id, patient_id)
+VALUES
+    ('2025-07-01 10:30:00', 'General Checkup', 1, 2),
+    ('2025-07-02 11:00:00', 'Skin Rash', 2, 2),
+    ('2025-07-03 09:45:00', 'Knee Pain', 3, 3),
+    ('2025-07-04 14:00:00', 'Follow-up Visit', 1, 1),
+    ('2025-07-05 16:15:00', 'Consultation', 1, 4),
+    ('2025-07-06 08:30:00', 'Allergy Treatment', 2, 5);
