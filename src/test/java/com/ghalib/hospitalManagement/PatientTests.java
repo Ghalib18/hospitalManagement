@@ -33,9 +33,6 @@ public class PatientTests {
     @Test
     public void printAll(){
         List<Patient> patientList=patientRepo.findALL();
-        for(Patient x: patientList){
-            System.out.println(x);
-        }
     }
 
 
