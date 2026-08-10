@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/public")
+@RequestMapping("/admin")
 @RequiredArgsConstructor
 public class PatientController {
     private final PatientService patientService;
