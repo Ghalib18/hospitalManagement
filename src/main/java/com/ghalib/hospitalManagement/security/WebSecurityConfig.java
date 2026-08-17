@@ -1,4 +1,4 @@
-package com.ghalib.hospitalManagement.config;
+package com.ghalib.hospitalManagement.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
