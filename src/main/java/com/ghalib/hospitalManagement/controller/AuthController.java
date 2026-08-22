@@ -2,6 +2,7 @@ package com.ghalib.hospitalManagement.controller;
 
 import com.ghalib.hospitalManagement.dto.LoginRequestDto;
 import com.ghalib.hospitalManagement.dto.LoginResponseDto;
+import com.ghalib.hospitalManagement.dto.SignUpRequestDto;
 import com.ghalib.hospitalManagement.dto.SignupResponseDto;
 import com.ghalib.hospitalManagement.security.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,8 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<SignupResponseDto> signup(@RequestBody LoginRequestDto loginRequestDto){
-        return ResponseEntity.ok(authService.signup(loginRequestDto));
+    public ResponseEntity<SignupResponseDto> signup(@RequestBody SignUpRequestDto signupRequestDto){
+        return ResponseEntity.ok(authService.signup(signupRequestDto));
     }
 
 }

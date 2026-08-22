@@ -2,9 +2,7 @@ package com.ghalib.hospitalManagement.entity;
 
 import com.ghalib.hospitalManagement.entity.type.BloodGroup;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
@@ -16,10 +14,12 @@ import java.util.List;
 @ToString
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Patient {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
@@ -38,6 +38,10 @@ public class Patient {
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
+
+    @OneToOne
+    @MapsId
+    private User user;
 
 
     // here we learn the concept of orphanRemoval which means that i we set remove child from paernt class then it will be also remove from the child class (using @transcation)
