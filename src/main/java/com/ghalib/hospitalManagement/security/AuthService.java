@@ -31,7 +31,7 @@ public class AuthService {
 
     public LoginResponseDto login(LoginRequestDto loginRequestDto){
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(),loginRequestDto.getPassword())
+                new UsernamePasswordAuthenticationToken(loginRequestDto.getEmail(),loginRequestDto.getPassword())
         );
         User user= (User)authentication.getPrincipal();
         String token=authUtil.generateAccessToken(user);
@@ -40,25 +40,26 @@ public class AuthService {
     }
 
     public SignupResponseDto signup(SignUpRequestDto signupRequestDto){
-        User user= userRepository.findByusername(signupRequestDto.getUsername()).orElse(null);
+        User user= userRepository.findByemail(signupRequestDto.getEmail()).orElse(null);
 
         if(user != null) throw new IllegalArgumentException("User Already Exists");
 
         user=userRepository.save(User.builder()
-                        .username(signupRequestDto.getUsername())
+                        .name(signupRequestDto.getName())
                         .password(passwordEncoder.encode(signupRequestDto.getPassword()))
+                        .email(signupRequestDto.getEmail())
                         .roles(Set.of(RoleType.PATIENT))
                         .build());
 
         Patient patient= Patient.builder()
-                .name(user.getUsername())
+                .name(user.getName())
                 .email(user.getEmail())
                 .user(user)
                 .build();
 
         patientRepo.save(patient);
 
-        return new SignupResponseDto(user.getId(),user.getUsername());
+        return new SignupResponseDto(user.getId(),user.getEmail());
     }
 
 }
